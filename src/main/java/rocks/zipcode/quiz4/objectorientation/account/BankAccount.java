@@ -4,7 +4,7 @@ package rocks.zipcode.quiz4.objectorientation.account;
  * @author leon on 27/12/2018.
  */
 public class BankAccount extends Account implements Transactable  {
-    private Double balance;
+    private Double balance = 0.0;
 
     public void setBalance(Double val) {
         this.balance= val;
@@ -12,11 +12,18 @@ public class BankAccount extends Account implements Transactable  {
 
     @Override
     public void deposit(Double amountToIncreaseBy) {
-        setBalance(balance + amountToIncreaseBy);
+        if (amountToIncreaseBy >= 0) {
+            setBalance(balance + amountToIncreaseBy);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
     public void withdrawal(Double amountToDecreaseBy) {
+        if (amountToDecreaseBy > this.balance || amountToDecreaseBy < 0){
+            throw new IllegalArgumentException();
+        }
         setBalance( balance - amountToDecreaseBy);
 
     }

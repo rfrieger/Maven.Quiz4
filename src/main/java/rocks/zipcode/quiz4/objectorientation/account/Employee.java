@@ -6,9 +6,10 @@ import java.sql.Wrapper;
  * @author leon on 30/12/2018.
  */
 public class Employee implements Worker, Transactable {
-    private BankAccount bankAccount;
+    private BankAccount bankAccount = new BankAccount();
     private Double hoursWorked = 0.0;
-    private Double hourlyWage;
+    private Double hourlyWage = 35.0;
+
 
     public Employee() {
     }
